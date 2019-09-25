@@ -1,4 +1,10 @@
-# Changes crossterm_cursor 0.3
+# Version 0.3.1
+
+- Maintenance release only
+- Moved to a [separate repository](https://github.com/crossterm-rs/crossterm-cursor)
+
+# Version 0.3.0
+
 - `TerminalCursor::pos()` returns `crossterm::Result<(u16, u16)>`
 - `TerminalCursor::move_*` returns `crossterm::Result`
 - `TerminalCursor::reset_position()` to `restore_position()`
@@ -8,8 +14,10 @@
 - `QueueableCommand::queue` returns `crossterm::Result`
 - Command API takes mutable self instead of self
 
-# Changes crossterm_cursor 0.2
+# Version 0.2.0
+
 - Removed `TerminalCursor::from_output()` 
 
-# Changes crossterm_cursor 0.1 
+# Version 0.1.0
+ 
 - Moved out of `crossterm` 5.4 crate. 
