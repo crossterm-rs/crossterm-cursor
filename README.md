@@ -38,7 +38,7 @@ Add the `crossterm_cursor` package to your `Cargo.toml` file.
 
 ```
 [dependencies]
-crossterm_cursor = "0.2"
+crossterm_cursor = "0.3"
 ```
 Import the `crossterm_cursor` modules you want to use.
 
