@@ -44,10 +44,10 @@ crossterm = "0.11"
 <p></p>
 
 ```rust
-pub use std::io::{stdout, Write};  
-pub use crossterm::{execute, Goto, Result};
+use std::io::{stdout, Write};  
+use crossterm::{execute, Goto, Result};
 
-pub fn main() -> Result<()> {
+fn main() -> Result<()> {
     execute!(stdout(), Goto(10, 10))
 }
 ```
