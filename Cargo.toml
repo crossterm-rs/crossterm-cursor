@@ -17,3 +17,4 @@ crossterm_winapi = { version = "0.2.1" }
 
 [dependencies]
 crossterm_utils = { version = "0.3.1" }
+lazy_static = "1.4"
