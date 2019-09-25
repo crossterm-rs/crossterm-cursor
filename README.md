@@ -31,7 +31,7 @@ the `cursor` feature enabled (see [feature flags](https://crossterm-rs.github.io
 
 <details>
 <summary>
-Click to show `Cargo.toml`.
+Click to show Cargo.toml.
 </summary>
 
 ```toml
