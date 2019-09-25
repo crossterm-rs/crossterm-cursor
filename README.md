@@ -50,7 +50,7 @@ pub use crossterm_cursor::{cursor, TerminalCursor};
 
 - [Documentation](https://docs.rs/crossterm_cursor/)
 - [Crates.io](https://crates.io/crates/crossterm_cursor)
-- [Examples](/examples)
+- [Examples](https://github.com/crossterm-rs/examples)
 
 ## Features
 These are the features of this crate:
