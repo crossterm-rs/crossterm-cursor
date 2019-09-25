@@ -33,11 +33,13 @@ the `cursor` feature enabled (see [feature flags](https://crossterm-rs.github.io
 <summary>
 Click to show `Cargo.toml`.
 </summary>
+
 ```toml
 [dependencies]
 # All crossterm features are enabled by default.
 crossterm = "0.11"
 ```
+
 </details>
 <p></p>
 
