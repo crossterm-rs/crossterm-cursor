@@ -3,7 +3,7 @@
 # Crossterm Cursor
 
 This crate allows you to work with the terminal cursor. It supports all UNIX and Windows terminals down
-to windows 7 (not all terminals are tested, see the
+to Windows 7 (not all terminals are tested, see the
 [Tested Terminals](https://github.com/crossterm-rs/crossterm/blob/master/README.md#tested-terminals) for more info).
 
 
