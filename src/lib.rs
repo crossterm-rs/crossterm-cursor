@@ -38,9 +38,7 @@
 //!
 //! ```no_run
 //! use std::io::{stdout, Write};
-//!
-//! use crossterm_cursor::{execute, Result};
-//! use crossterm_cursor::{BlinkOff, BlinkOn, Goto, ResetPos, SavePos};
+//! use crossterm_cursor::{execute, BlinkOff, BlinkOn, Goto, ResetPos, Result, SavePos};
 //!
 //! fn main() -> Result<()> {
 //!     execute!(
