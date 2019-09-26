@@ -4,7 +4,7 @@
 //!
 //! The `crossterm_cursor` crate provides a functionality to work with the terminal cursor.
 //!
-//! This documentation does not contain lot of examples. The reason is that it's fairly
+//! This documentation does not contain a lot of examples. The reason is that it's fairly
 //! obvious how to use this crate. Although, we do provide
 //! [separate examples](https://github.com/TimonPost/crossterm/tree/master/examples) and
 //! some [complex programs](https://github.com/TimonPost/crossterm/tree/master/examples/program_examples)
