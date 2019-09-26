@@ -13,10 +13,11 @@ for more info).
 
 ## Future
 
-> The `crossterm_cursor` crate functionality will be moved to the `crossterm` crate. Date is not set yet,
-> but it doesn't make sense to start a new project with it.
+> The `crossterm_cursor` crate code will be moved to the `crossterm` crate (it's reexported there now).
+> Date is not set yet, but it doesn't make a lot of sense to start a new project with it. Please, use
+> the `crossterm` crate with the `cursor` feature enabled.
 
-Issues are disabled for this repository for the same reason. Please, report all issues in the
+Issues in this repository are disabled for the same reason. Please, report all issues in the
 [crossterm-rs/crossterm](https://github.com/crossterm-rs/crossterm/issues) repository.
 
 ## Features
