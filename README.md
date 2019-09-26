@@ -6,13 +6,18 @@ This crate allows you to work with the terminal cursor. It supports all UNIX and
 to Windows 7 (not all terminals are tested, see the
 [Tested Terminals](https://github.com/crossterm-rs/crossterm/blob/master/README.md#tested-terminals) for more info).
 
-
 `crossterm_cursor` is a sub-crate of the [crossterm](https://crates.io/crates/crossterm) crate. You can use it
 directly, but it's **highly recommended** to use the [crossterm](https://crates.io/crates/crossterm) crate with
-the `cursor` feature enabled (see [feature flags](https://crossterm-rs.github.io/crossterm/docs/feature_flags.html) for more info).
+the `cursor` feature enabled (see [feature flags](https://crossterm-rs.github.io/crossterm/docs/feature_flags.html)
+for more info).
+
+## Future
 
 > The `crossterm_cursor` crate functionality will be moved to the `crossterm` crate. Date is not set yet,
 > but it doesn't make sense to start a new project with it.
+
+Issues are disabled for this repository for the same reason. Please, report all issues in the
+[crossterm-rs/crossterm](https://github.com/crossterm-rs/crossterm/issues) repository.
 
 ## Features
 
