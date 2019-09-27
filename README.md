@@ -2,140 +2,79 @@
 
 # Crossterm Cursor
 
-This crate allows you to move the terminal cursor cross-platform. 
-It supports all UNIX and windows terminals down to windows 7 (not all terminals are tested
-see [Tested Terminals](#tested-terminals) for more info)
+This crate allows you to work with the terminal cursor. It supports all UNIX and Windows terminals down
+to Windows 7 (not all terminals are tested, see the
+[Tested Terminals](https://github.com/crossterm-rs/crossterm/blob/master/README.md#tested-terminals) for more info).
 
-This crate is a sub-crate of [crossterm](https://crates.io/crates/crossterm) to move the cursor, and can be
-use individually.
+`crossterm_cursor` is a sub-crate of the [crossterm](https://crates.io/crates/crossterm) crate. You can use it
+directly, but it's **highly recommended** to use the [crossterm](https://crates.io/crates/crossterm) crate with
+the `cursor` feature enabled (see [feature flags](https://crossterm-rs.github.io/crossterm/docs/feature_flags.html)
+for more info).
 
-Other sub-crates are:
+## Future
 
-- [crossterm_style](https://crates.io/crates/crossterm_style) 
-- [crossterm_terminal](https://crates.io/crates/crossterm_terminal) 
-- [crossterm_screen](https://crates.io/crates/crossterm_screen)
-- [crossterm_input](https://crates.io/crates/crossterm_input)
- 
-When you want to use other modules as well you might want to use crossterm with
-[feature flags](https://crossterm-rs.github.io/crossterm/docs/feature_flags.html).
- 
-## Table of contents:
+> The `crossterm_cursor` crate code will be moved to the `crossterm` crate (it's reexported there now).
+> Date is not set yet, but it doesn't make a lot of sense to start a new project with it. Please, use
+> the `crossterm` crate with the `cursor` feature enabled.
 
-- [Getting started](#getting-started)
-- [Useful links](#useful-links)
-- [Features](#features)
-- [Examples](#examples)
-- [Tested Terminals](#tested-terminals)
-- [Authors](#authors)
-- [License](#license)
-
-## Getting Started
-
-All examples of how `crossterm_cursor` works can be found in the [examples](https://github.com/crossterm-rs/examples)
-repository.
-
-Add the `crossterm_cursor` package to your `Cargo.toml` file.
-
-```
-[dependencies]
-crossterm_cursor = "0.3"
-```
-Import the `crossterm_cursor` modules you want to use.
-
-```rust  
-pub use crossterm_cursor::{cursor, TerminalCursor};
-```
-
-### Useful Links
-
-- [Documentation](https://docs.rs/crossterm_cursor/)
-- [Crates.io](https://crates.io/crates/crossterm_cursor)
-- [Examples](https://github.com/crossterm-rs/examples)
+Issues in this repository are disabled for the same reason. Please, report all issues in the
+[crossterm-rs/crossterm](https://github.com/crossterm-rs/crossterm/issues) repository.
 
 ## Features
-These are the features of this crate:
 
 - Cross-platform
-- Multithreaded (send, sync)
-- Detailed Documentation
-- Few Dependencies
+- Multi-threaded (send, sync)
+- Detailed documentation
+- Few dependencies
 - Cursor
-    - Moving _n_ times (up, down, left, right)
-    - Position (set/get)
-    - Store cursor position and resetting to that later
-    - Hiding/Showing
-    - Blinking Cursor (only some terminals are supporting this)
-   
-## Command API
+  - Move the cursor N times (up, down, left, right)
+  - Set/get the cursor position
+  - Store the cursor position and restore to it later
+  - Hide/show the cursor
+  - Enable/disable cursor blinking (not all terminals do support this feature)
 
-My first recommendation is to use the [command API](https://crossterm-rs.github.io/crossterm/docs/command.html),
-because this might replace some of the existing API in the future.  It is more convenient, faster and
-easier to use.
+## Getting started
 
-## Examples 
+<details>
+<summary>
+Click to show Cargo.toml.
+</summary>
 
-The [examples](https://github.com/crossterm-rs/examples) repository has more complete and verbose examples.
-
-```rust 
-use crossterm_cursor::cursor;
-
-let mut cursor = cursor();
-
-/// Moving the cursor
-// Set the cursor to position X: 10, Y: 5 in the terminal
-cursor.goto(10,5);
-
-// Move the cursor up,right,down,left 3 cells.
-cursor.move_up(3);
-cursor.move_right(3);
-cursor.move_down(3);
-cursor.move_left(3);
-
-/// Safe the current cursor position to recall later
-// Goto X: 5 Y: 5
-cursor.goto(5,5);
-// Safe cursor position: X: 5 Y: 5
-cursor.save_position();
-// Goto X: 5 Y: 20
-cursor.goto(5,20);
-// Print at X: 5 Y: 20.
-print!("Yea!");
-// Reset back to X: 5 Y: 5.
-cursor.restore_position();
-// Print 'Back' at X: 5 Y: 5.
-print!("Back");
-
-// hide cursor
-cursor.hide();
-// show cursor
-cursor.show();
-// blink or not blinking of the cursor (not widely supported)
-cursor.blink(true)
+```toml
+[dependencies]
+# All crossterm features are enabled by default.
+crossterm = "0.11"
 ```
 
-## Tested terminals
+</details>
+<p></p>
 
-- Windows Powershell
-    - Windows 10 (pro)
-- Windows CMD
-    - Windows 10 (pro)
-    - Windows 8.1 (N)
-- Ubuntu Desktop Terminal
-    - Ubuntu 17.10
-- (Arch, Manjaro) KDE Konsole
-- Linux Mint
+```rust
+use std::io::{stdout, Write};  
+use crossterm::{execute, Goto, Result};
 
-This crate supports all Unix terminals and windows terminals down to Windows 7 but not all of them have been tested.
-If you have used this library for a terminal other than the above list without issues feel free to add it to the above list, I really would appreciate it.
+fn main() -> Result<()> {
+    execute!(stdout(), Goto(10, 10))
+}
+```
 
+It's recommended to use the [Command API](https://crossterm-rs.github.io/crossterm/docs/command.html),
+because this might replace some of the existing API in the future. It is more convenient, faster and
+easier to use.
+
+## Other resources
+
+- [API documentation](https://docs.rs/crossterm_cursor/) (with other examples)
+- [Examples repository](https://github.com/crossterm-rs/examples)
+- [The Book](https://crossterm-rs.github.io/crossterm/docs/index.html)
+   
 ## Authors
 
 * **Timon Post** - *Project Owner & creator*
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE) file for details
-
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
 
 [s1]: https://img.shields.io/crates/v/crossterm_cursor.svg
 [l1]: https://crates.io/crates/crossterm_cursor

@@ -1,3 +1,9 @@
+# Version master
+
+## Breaking changes
+
+- `sys` module is no longer public
+
 # Version 0.3.1
 
 - Maintenance release only

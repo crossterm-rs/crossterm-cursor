@@ -4,28 +4,28 @@
 
 use crossterm_utils::Result;
 
-use crate::sys::winapi::{Cursor, Handle};
+use crate::sys::windows::ScreenBufferCursor;
 
-use super::ITerminalCursor;
+use super::Cursor;
 
 /// This struct is a windows implementation for cursor related actions.
-pub struct WinApiCursor;
+pub(crate) struct WinApiCursor;
 
 impl WinApiCursor {
-    pub fn new() -> Box<WinApiCursor> {
-        Box::from(WinApiCursor)
+    pub(crate) fn new() -> WinApiCursor {
+        WinApiCursor
     }
 }
 
-impl ITerminalCursor for WinApiCursor {
+impl Cursor for WinApiCursor {
     fn goto(&self, x: u16, y: u16) -> Result<()> {
-        let cursor = Cursor::new()?;
+        let cursor = ScreenBufferCursor::new()?;
         cursor.goto(x as i16, y as i16)?;
         Ok(())
     }
 
     fn pos(&self) -> Result<(u16, u16)> {
-        let cursor = Cursor::new()?;
+        let cursor = ScreenBufferCursor::new()?;
         Ok(cursor.position()?.into())
     }
 
@@ -54,22 +54,22 @@ impl ITerminalCursor for WinApiCursor {
     }
 
     fn save_position(&self) -> Result<()> {
-        Cursor::save_cursor_pos()?;
+        ScreenBufferCursor::save_cursor_pos()?;
         Ok(())
     }
 
     fn restore_position(&self) -> Result<()> {
-        Cursor::restore_cursor_pos()?;
+        ScreenBufferCursor::restore_cursor_pos()?;
         Ok(())
     }
 
     fn hide(&self) -> Result<()> {
-        Cursor::from(Handle::current_out_handle()?).set_visibility(false)?;
+        ScreenBufferCursor::new()?.set_visibility(false)?;
         Ok(())
     }
 
     fn show(&self) -> Result<()> {
-        Cursor::from(Handle::current_out_handle()?).set_visibility(true)?;
+        ScreenBufferCursor::new()?.set_visibility(true)?;
         Ok(())
     }
 
@@ -80,10 +80,10 @@ impl ITerminalCursor for WinApiCursor {
 
 #[cfg(test)]
 mod tests {
-    use super::{ITerminalCursor, WinApiCursor};
+    use super::{Cursor, WinApiCursor};
 
     #[test]
-    fn test_winapi_goto() {
+    fn test_goto() {
         let cursor = WinApiCursor::new();
 
         let (saved_x, saved_y) = cursor.pos().unwrap();
@@ -96,7 +96,7 @@ mod tests {
     }
 
     #[test]
-    fn test_winapi_save_and_restore() {
+    fn test_save_restore_position() {
         let cursor = WinApiCursor::new();
 
         let (saved_x, saved_y) = cursor.pos().unwrap();
