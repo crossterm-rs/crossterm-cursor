@@ -71,8 +71,8 @@ mod sys;
 /// You can create as many instances as you want and they will always refer to the
 /// same terminal cursor.
 ///
-/// The cursor position is 0 based. For example `0` means first column / row, `1`
-/// second column / row, etc.
+/// The cursor position is 0 based. For example `0` means first column/row, `1`
+/// second column/row, etc.
 ///
 /// # Examples
 ///
@@ -155,7 +155,7 @@ impl TerminalCursor {
     ///
     /// # Notes
     ///
-    /// The cursor position is stored globally and is not related to the current / any
+    /// The cursor position is stored globally and is not related to the current/any
     /// `TerminalCursor` instance.
     pub fn save_position(&self) -> Result<()> {
         self.cursor.save_position()
@@ -201,7 +201,7 @@ pub fn cursor() -> TerminalCursor {
 ///
 /// # Notes
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct Goto(pub u16, pub u16);
 
 impl Command for Goto {
@@ -221,7 +221,7 @@ impl Command for Goto {
 ///
 /// # Notes
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct Up(pub u16);
 
 impl Command for Up {
@@ -241,7 +241,7 @@ impl Command for Up {
 ///
 /// # Notes
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct Down(pub u16);
 
 impl Command for Down {
@@ -261,7 +261,7 @@ impl Command for Down {
 ///
 /// # Notes
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct Left(pub u16);
 
 impl Command for Left {
@@ -281,7 +281,7 @@ impl Command for Left {
 ///
 /// # Notes
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct Right(pub u16);
 
 impl Command for Right {
@@ -301,10 +301,10 @@ impl Command for Right {
 ///
 /// # Notes
 ///
-/// The cursor position is stored globally and is not related to the current / any
+/// The cursor position is stored globally and is not related to the current/any
 /// `TerminalCursor` instance.
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct SavePos;
 
 impl Command for SavePos {
@@ -324,7 +324,7 @@ impl Command for SavePos {
 ///
 /// # Notes
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct ResetPos;
 
 impl Command for ResetPos {
@@ -344,10 +344,10 @@ impl Command for ResetPos {
 ///
 /// # Notes
 ///
-/// The cursor position is stored globally and is not related to the current / any
+/// The cursor position is stored globally and is not related to the current/any
 /// `TerminalCursor` instance.
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct Hide;
 
 impl Command for Hide {
@@ -367,10 +367,10 @@ impl Command for Hide {
 ///
 /// # Notes
 ///
-/// The cursor position is stored globally and is not related to the current / any
+/// The cursor position is stored globally and is not related to the current/any
 /// `TerminalCursor` instance.
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct Show;
 
 impl Command for Show {
@@ -392,7 +392,7 @@ impl Command for Show {
 ///
 /// Windows versions lower than Windows 10 do not support this functionality.
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct BlinkOn;
 
 impl Command for BlinkOn {
@@ -414,7 +414,7 @@ impl Command for BlinkOn {
 ///
 /// Windows versions lower than Windows 10 do not support this functionality.
 ///
-/// Commands must be executed / queued for execution otherwise they do nothing.
+/// Commands must be executed/queued for execution otherwise they do nothing.
 pub struct BlinkOff;
 
 impl Command for BlinkOff {
