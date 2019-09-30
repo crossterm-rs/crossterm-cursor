@@ -33,7 +33,7 @@ Issues in this repository are disabled for the same reason. Please, report all i
   - Hide/show the cursor
   - Enable/disable cursor blinking (not all terminals do support this feature)
 
-## Getting started
+## Getting Started
 
 <details>
 <summary>
@@ -62,7 +62,7 @@ It's recommended to use the [Command API](https://crossterm-rs.github.io/crosste
 because this might replace some of the existing API in the future. It is more convenient, faster and
 easier to use.
 
-## Other resources
+## Other Resources
 
 - [API documentation](https://docs.rs/crossterm_cursor/) (with other examples)
 - [Examples repository](https://github.com/crossterm-rs/examples)
