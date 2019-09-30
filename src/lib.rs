@@ -120,7 +120,7 @@ impl TerminalCursor {
         self.cursor.goto(column, row)
     }
 
-    /// Gets the cursor position (`(column, row)` tuple).
+    /// Returns the cursor position (`(column, row)` tuple).
     pub fn pos(&self) -> Result<(u16, u16)> {
         self.cursor.pos()
     }
