@@ -192,7 +192,26 @@ impl TerminalCursor {
     }
 }
 
-/// Creates a new terminal cursor.
+/// Creates a new `TerminalCursor`.
+///
+/// # Examples
+///
+/// Basic usage:
+///
+/// ```no_run
+/// use crossterm_cursor::{cursor, Result};
+///
+/// fn main() -> Result<()> {
+///     let cursor = cursor();
+///     cursor.save_position()?;
+///
+///     cursor.goto(10, 10)?;
+///     cursor.blink(true)?;
+///
+///     cursor.blink(false)?;
+///     cursor.restore_position()
+/// }
+/// ```
 pub fn cursor() -> TerminalCursor {
     TerminalCursor::new()
 }
