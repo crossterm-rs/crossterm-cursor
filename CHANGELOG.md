@@ -1,8 +1,7 @@
 # Version master
 
-## Breaking changes
-
-- `sys` module is no longer public
+- Remove all references to the crossterm book
+- `sys` module is no longer public (breaking)
 
 # Version 0.3.1
 
