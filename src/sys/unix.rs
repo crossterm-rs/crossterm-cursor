@@ -2,12 +2,12 @@ use std::io::{self, BufRead, Write};
 
 use crossterm_utils::{
     csi,
-    sys::unix::{self, RAW_MODE_ENABLED},
+    sys::unix::{disable_raw_mode, enable_raw_mode, is_raw_mode_enabled},
     write_cout, Result,
 };
 
 pub(crate) fn get_cursor_position() -> Result<(u16, u16)> {
-    if unsafe { RAW_MODE_ENABLED } {
+    if is_raw_mode_enabled() {
         pos_raw()
     } else {
         pos()
@@ -24,9 +24,9 @@ pub(crate) fn show_cursor(show_cursor: bool) -> Result<()> {
 }
 
 fn pos() -> Result<(u16, u16)> {
-    unix::enable_raw_mode()?;
+    enable_raw_mode()?;
     let pos = pos_raw();
-    unix::disable_raw_mode()?;
+    disable_raw_mode()?;
     pos
 }
 
