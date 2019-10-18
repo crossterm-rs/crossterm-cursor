@@ -1,5 +1,6 @@
-use std::io::{self, BufRead, Write};
+use std::io::{self, Write};
 
+use crossterm_input::{InputEvent, TerminalInput};
 use crossterm_utils::{
     csi,
     sys::unix::{disable_raw_mode, enable_raw_mode, is_raw_mode_enabled},
@@ -34,26 +35,16 @@ fn pos_raw() -> Result<(u16, u16)> {
     // Where is the cursor?
     // Use `ESC [ 6 n`.
     let mut stdout = io::stdout();
-    let stdin = io::stdin();
 
     // Write command
     stdout.write_all(b"\x1B[6n")?;
     stdout.flush()?;
 
-    stdin.lock().read_until(b'[', &mut vec![])?;
+    let mut reader = TerminalInput::new().read_sync();
 
-    let mut rows = vec![];
-    stdin.lock().read_until(b';', &mut rows)?;
-
-    let mut cols = vec![];
-    stdin.lock().read_until(b'R', &mut cols)?;
-
-    // remove delimiter
-    rows.pop();
-    cols.pop();
-
-    let rows = String::from_utf8(rows)?.parse::<u16>()?;
-    let cols = String::from_utf8(cols)?.parse::<u16>()?;
-
-    Ok((cols - 1, rows - 1))
+    loop {
+        if let Some(InputEvent::CursorPosition(x, y)) = reader.next() {
+            return Ok((x, y));
+        }
+    }
 }
