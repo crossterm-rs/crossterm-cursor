@@ -1,4 +1,4 @@
-# Version master
+# Version 0.4.0
 
 - Remove all references to the crossterm book
 - `sys` module is no longer public (breaking)
