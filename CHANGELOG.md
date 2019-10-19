@@ -1,7 +1,13 @@
 # Version 0.4.0
 
-- Remove all references to the crossterm book
-- `sys` module is no longer public (breaking)
+- Internal refactoring ([PR #2](https://github.com/crossterm-rs/crossterm-cursor/pull/2))
+  - Improved public documentation
+  - `sys` module is no longer public
+- Fixed examples link ([PR #6](https://github.com/crossterm-rs/crossterm-cursor/pull/6))
+- Sync documentation style ([PR #7](https://github.com/crossterm-rs/crossterm-cursor/pull/7))
+- Removed all references to the crossterm book ([PR #8](https://github.com/crossterm-rs/crossterm-cursor/pull/8))
+- Replaced `RAW_MODE_ENABLED` with `is_raw_mode_enabled` ([PR #9](https://github.com/crossterm-rs/crossterm-cursor/pull/9))
+- Use `SyncReader` & `InputEvent::CursorPosition` for `pos_raw()` ([PR #10](https://github.com/crossterm-rs/crossterm-cursor/pull/10))
 
 # Version 0.3.1
 
