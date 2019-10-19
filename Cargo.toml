@@ -16,7 +16,7 @@ maintenance = { status = "deprecated" }
 
 [target.'cfg(windows)'.dependencies]
 winapi = { version =  "0.3.8", features = ["wincon", "winnt", "minwindef"] }
-crossterm_winapi = { version = "0.2.2" }
+crossterm_winapi = { version = "0.3.0" }
 
 [dependencies]
 crossterm_utils = { version = "0.4.0" }
